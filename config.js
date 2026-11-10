@@ -3,8 +3,9 @@
    Pas hier de sluitingstijd, startbedragen en de backend aan.
    ===================================================================== */
 window.CONFIG = {
-  // Sluiting van de veiling (Europe/Brussels). Standaard: za 14/11/2026 21:30.
-  closeAt: "2026-11-14T21:30:00+01:00",
+  // Sluiting van de veiling (Europe/Brussels). Standaard: vr 20/11/2026 21:30.
+  // De wedstrijd zelf blijft zaterdag 14 november.
+  closeAt: "2026-11-20T21:30:00+01:00",
 
   // Minimumverhoging in hele euro's: elk bod moet minstens dit bedrag
   // hoger zijn dan het huidige hoogste bod (of gelijk aan het startbod
@@ -38,24 +39,27 @@ window.CONFIG = {
   items: [
     {
       id: "jersey1",
-      title: "Gedragen jersey 1",
-      blurb: "Een gedragen wedstrijdshirt van de Giants.",
-      image: "assets/jersey-1.jpg",
-      startBid: 25
+      title: "Jersey — lot 1",
+      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
+      image: "assets/jersey.jpg",
+      startBid: 25,
+      group: "jersey"
     },
     {
       id: "jersey2",
-      title: "Gedragen jersey 2",
-      blurb: "Een gedragen wedstrijdshirt van de Giants.",
-      image: "assets/jersey-2.jpg",
-      startBid: 25
+      title: "Jersey — lot 2",
+      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
+      image: "assets/jersey.jpg",
+      startBid: 25,
+      group: "jersey"
     },
     {
       id: "jersey3",
-      title: "Gedragen jersey 3",
-      blurb: "Een gedragen wedstrijdshirt van de Giants.",
-      image: "assets/jersey-3.jpg",
-      startBid: 25
+      title: "Jersey — lot 3",
+      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
+      image: "assets/jersey.jpg",
+      startBid: 25,
+      group: "jersey"
     },
     {
       id: "ball",

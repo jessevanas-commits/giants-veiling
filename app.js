@@ -359,71 +359,112 @@
       .replace(/"/g, "&quot;");
   }
 
-  function renderItem(it) {
-    const high = currentHigh(it.id);
-    const min = minBid(it.id);
-    const closed = isClosed();
+  function histHtml(it) {
     const hist = bidsOf(state.items[it.id] || {}).slice(0, 6);
-    const histHtml = hist.length
-      ? "<ul class='hist'>" +
-        hist
-          .map((b) => {
-            const extra = b.seat ? " · " + escapeHtml(b.seat) : "";
-            return (
-              "<li><span>" +
-              escapeHtml(b.name) +
-              extra +
-              "</span><span>" +
-              euro(b.amount) +
-              "</span></li>"
-            );
-          })
-          .join("") +
-        "</ul>"
-      : "<p class='hint'>Nog geen biedingen. Startbod is " + euro(it.startBid) + ".</p>";
+    if (!hist.length) {
+      return "<p class='hint'>Nog geen biedingen. Startbod is " + euro(it.startBid) + ".</p>";
+    }
+    return (
+      "<ul class='hist'>" +
+      hist
+        .map((b) => {
+          const extra = b.seat ? " · " + escapeHtml(b.seat) : "";
+          return (
+            "<li><span>" +
+            escapeHtml(b.name) +
+            extra +
+            "</span><span>" +
+            euro(b.amount) +
+            "</span></li>"
+          );
+        })
+        .join("") +
+      "</ul>"
+    );
+  }
 
-    const who = high.name
-      ? "<div class='who'>Hoogste bieder<b>" +
+  function whoHtml(it) {
+    const high = currentHigh(it.id);
+    if (high.name) {
+      return (
+        "<div class='who'>Hoogste bieder<b>" +
         escapeHtml(high.name) +
         "</b>" +
         (high.seat ? escapeHtml(high.seat) : "") +
         "</div>"
-      : "<div class='who'>Nog geen bieder</div>";
+      );
+    }
+    return "<div class='who'>Nog geen bieder</div>";
+  }
 
-    const form = closed
-      ? "<p class='hint'>De veiling is gesloten.</p>"
-      : "<form class='form' data-item='" +
-        it.id +
-        "'>" +
-        "<div><label for='n-" +
-        it.id +
-        "'>Jouw naam</label>" +
-        "<input id='n-" +
-        it.id +
-        "' name='name' required maxlength='40' autocomplete='name' placeholder='Naam voor de omroeper'></div>" +
-        "<div><label for='a-" +
-        it.id +
-        "'>Jouw bod (hele euro's)</label>" +
-        "<input id='a-" +
-        it.id +
-        "' name='amount' type='number' inputmode='numeric' step='1' min='" +
-        min +
-        "' value='" +
-        min +
-        "' required></div>" +
-        "<div><label for='s-" +
-        it.id +
-        "'>Zitplaats / vak <span style='font-weight:400'>(optioneel)</span></label>" +
-        "<input id='s-" +
-        it.id +
-        "' name='seat' maxlength='40' placeholder='bv. vak 12, rij 4'></div>" +
-        "<p class='hint'>Bied in hele euro's. Elk bedrag van " +
-        euro(min) +
-        " of hoger is geldig. Je betaalt niets nu.</p>" +
-        "<button class='bid' type='submit'>Plaats bod</button>" +
-        "<p class='msg' aria-live='polite'></p>" +
-        "</form>";
+  function formHtml(it) {
+    const min = minBid(it.id);
+    if (isClosed()) return "<p class='hint'>De veiling is gesloten.</p>";
+    return (
+      "<form class='form' data-item='" +
+      it.id +
+      "'>" +
+      "<div><label for='n-" +
+      it.id +
+      "'>Jouw naam</label>" +
+      "<input id='n-" +
+      it.id +
+      "' name='name' required maxlength='40' autocomplete='name' placeholder='Naam voor de omroeper'></div>" +
+      "<div><label for='a-" +
+      it.id +
+      "'>Jouw bod (hele euro's)</label>" +
+      "<input id='a-" +
+      it.id +
+      "' name='amount' type='number' inputmode='numeric' step='1' min='" +
+      min +
+      "' value='" +
+      min +
+      "' required></div>" +
+      "<div><label for='s-" +
+      it.id +
+      "'>Zitplaats / vak <span style='font-weight:400'>(optioneel)</span></label>" +
+      "<input id='s-" +
+      it.id +
+      "' name='seat' maxlength='40' placeholder='bv. vak 12, rij 4'></div>" +
+      "<p class='hint'>Bied in hele euro's. Elk bedrag van " +
+      euro(min) +
+      " of hoger is geldig. Je betaalt niets nu.</p>" +
+      "<button class='bid' type='submit'>Plaats bod</button>" +
+      "<p class='msg' aria-live='polite'></p>" +
+      "</form>"
+    );
+  }
 
+  function bidboxHtml(it) {
+    const high = currentHigh(it.id);
+    return (
+      '<div class="bidbox"><div><div class="lbl">' +
+      (high.amount ? "Huidig hoogste bod" : "Startbod") +
+      '</div><div class="amt">' +
+      euro(high.amount || it.startBid) +
+      "</div></div>" +
+      whoHtml(it) +
+      "</div>"
+    );
+  }
+
+  function lotInner(it) {
+    return bidboxHtml(it) + histHtml(it) + formHtml(it);
+  }
+
+  function renderLot(it) {
+    return (
+      '<div class="lot" id="item-' +
+      it.id +
+      '"><h3>' +
+      escapeHtml(it.title) +
+      "</h3>" +
+      lotInner(it) +
+      "</div>"
+    );
+  }
+
+  function renderItem(it) {
     return (
       '<article class="card" id="item-' +
       it.id +
@@ -432,7 +473,7 @@
       it.image +
       '" alt="' +
       escapeHtml(it.title) +
-      '"><div class="cap">Voorbeeldbeeld — de foto van het echte gedragen item volgt nog.</div></div>' +
+      '"></div>' +
       '<div class="body">' +
       "<h2>" +
       escapeHtml(it.title) +
@@ -440,17 +481,44 @@
       '<p class="blurb">' +
       escapeHtml(it.blurb) +
       "</p>" +
-      '<div class="bidbox"><div><div class="lbl">' +
-      (high.amount ? "Huidig hoogste bod" : "Startbod") +
-      '</div><div class="amt">' +
-      euro(high.amount || it.startBid) +
-      "</div></div>" +
-      who +
-      "</div>" +
-      histHtml +
-      form +
+      lotInner(it) +
       "</div></article>"
     );
+  }
+
+  function renderGroup(items) {
+    const first = items[0];
+    const lots = items.map(renderLot).join("");
+    return (
+      '<article class="card group" id="group-' +
+      escapeHtml(first.group) +
+      '">' +
+      '<div class="photo"><img src="' +
+      first.image +
+      '" alt="Gedragen jersey"></div>' +
+      '<div class="body">' +
+      "<h2>Gedragen jersey</h2>" +
+      '<p class="blurb">3 identieke gedragen wedstrijdshirts. Je biedt op één lot.</p>' +
+      lots +
+      "</div></article>"
+    );
+  }
+
+  function renderGrid() {
+    const used = {};
+    const parts = [];
+    for (const it of C.items) {
+      if (used[it.id]) continue;
+      if (it.group) {
+        const members = C.items.filter((x) => x.group === it.group);
+        members.forEach((m) => (used[m.id] = true));
+        parts.push(renderGroup(members));
+      } else {
+        used[it.id] = true;
+        parts.push(renderItem(it));
+      }
+    }
+    return parts.join("");
   }
 
   function renderAdmin() {
@@ -501,7 +569,7 @@
     const wasFocus = document.activeElement;
     const focusId = wasFocus && wasFocus.id;
     const focusVal = wasFocus && "value" in wasFocus ? wasFocus.value : null;
-    els.grid.innerHTML = C.items.map(renderItem).join("");
+    els.grid.innerHTML = renderGrid();
     renderAdmin();
     if (focusId) {
       const again = document.getElementById(focusId);
