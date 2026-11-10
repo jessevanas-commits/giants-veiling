@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "auction": {
+      ".read": true,
+      "items": {
+        "$itemId": {
+          ".write": true,
+          ".validate": "newData.hasChildren(['amount']) && newData.child('amount').isNumber()"
+        }
+      }
+    }
+  }
+}

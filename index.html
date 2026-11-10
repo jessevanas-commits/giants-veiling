@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Bied mee op gedragen jerseys en de wedstrijdbal. Wereld Diabetes Dag, Windrose Giants Antwerp vs Brussels, 14 november 2026. Opbrengst gaat naar Hippo &amp; Friends.">
+  <meta property="og:title" content="Bied mee! Giants-veiling voor Hippo &amp; Friends">
+  <meta property="og:description" content="3 gedragen jerseys en de wedstrijdbal. Je betaalt niets nu — winnaars worden tijdens de wedstrijd omgeroepen.">
+  <meta property="og:image" content="assets/logo-giants.png">
+  <title>Bied mee! · Windrose Giants Antwerp</title>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#DA2129;
+      --red-dark:#9b1218;
+      --bg:#0b0b0b;
+      --card:#141414;
+      --card2:#1b1b1b;
+      --line:#2c2c2c;
+      --text:#f6f6f6;
+      --muted:#b8b8b8;
+      --soft:#8a8a8a;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.45}
+    body{min-height:100dvh}
+    img{max-width:100%;display:block}
+    a{color:var(--red)}
+    .wrap{width:min(1100px,100%);margin:0 auto;padding:0 16px}
+    header{background:linear-gradient(180deg,#1a0a0b 0%,var(--bg) 100%);border-bottom:1px solid var(--line);padding:18px 0 22px;text-align:center}
+    .brand{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .brand .logo{width:118px;height:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+    .brand .wr{height:36px;width:auto;opacity:.95}
+    .kicker{margin-top:14px;letter-spacing:.22em;text-transform:uppercase;font-size:11px;font-weight:700;color:var(--red)}
+    h1{font-family:"Bebas Neue",Impact,sans-serif;font-size:clamp(48px,14vw,84px);line-height:.9;letter-spacing:.02em;margin-top:6px}
+    .sub{font-size:clamp(16px,4vw,22px);font-weight:600;margin-top:6px}
+    .match{color:var(--muted);margin-top:8px;font-size:14px}
+    .notice,.charity{margin:16px auto 0;border-radius:14px;padding:14px 16px;text-align:left;font-size:14px}
+    .notice{background:#1a1510;border:1px solid #5a3b16;color:#f3e6c8}
+    .notice strong{color:#fff}
+    .charity{background:#141414;border:1px solid var(--line);color:var(--muted)}
+    .charity strong{color:var(--text)}
+    .warn{margin:16px auto 0;border-radius:14px;padding:14px 16px;background:#3a0f12;border:1px solid #7a1c22;color:#ffd6d8;font-size:14px;display:none}
+    .warn.show{display:block}
+    .clock{margin:18px auto 0;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    .clock .box{min-width:68px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center}
+    .clock .n{font-family:"Bebas Neue",sans-serif;font-size:32px;line-height:1;color:#fff}
+    .clock .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+    .clock.closed .n{color:var(--red)}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px;padding:22px 0 40px}
+    @media(min-width:740px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+    .photo{background:#0a0a0a;aspect-ratio:1/1;position:relative}
+    .photo img{width:100%;height:100%;object-fit:cover}
+    .cap{position:absolute;left:10px;right:10px;bottom:10px;font-size:11px;color:#ddd;background:rgba(0,0,0,.62);padding:6px 8px;border-radius:8px}
+    .body{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .body h2{font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.03em}
+    .body .blurb{color:var(--muted);font-size:14px;margin-top:-6px}
+    .bidbox{background:var(--card2);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+    .bidbox .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:600}
+    .bidbox .amt{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:1;color:#fff}
+    .bidbox .who{text-align:right;font-size:14px;color:var(--muted)}
+    .bidbox .who b{color:#fff;display:block;font-size:16px}
+    .hist{list-style:none;font-size:13px;color:var(--muted)}
+    .hist li{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid var(--line)}
+    .hist li:first-child{border-top:0}
+    .form{display:grid;gap:8px;margin-top:auto}
+    label{font-size:12px;font-weight:600;color:var(--muted)}
+    input{width:100%;background:#0e0e0e;border:1px solid #3a3a3a;color:#fff;border-radius:10px;padding:12px 12px;font:16px Inter,sans-serif}
+    input:focus{outline:2px solid var(--red);border-color:var(--red)}
+    .hint{font-size:12px;color:var(--soft)}
+    button.bid{appearance:none;border:0;background:var(--red);color:#fff;font-weight:700;font-size:16px;padding:14px 16px;border-radius:12px;cursor:pointer;width:100%;letter-spacing:.02em}
+    button.bid:active{transform:translateY(1px)}
+    button.bid:disabled{background:#4a4a4a;color:#aaa;cursor:not-allowed}
+    .msg{font-size:13px;min-height:1.2em}
+    .msg.ok{color:#8ee0a8}
+    .msg.err{color:#ff9b9b}
+    footer{border-top:1px solid var(--line);padding:22px 16px 40px;text-align:center;color:var(--soft);font-size:13px}
+    footer .wr{height:40px;margin:0 auto 12px}
+    footer p{margin:4px 0}
+    .admin{display:none;padding:0 0 40px}
+    body.is-admin .admin{display:block}
+    .admin h2{font-family:"Bebas Neue",sans-serif;font-size:36px;margin:8px 0 12px}
+    table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border-radius:12px;overflow:hidden}
+    th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{color:var(--soft);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+    button.del{background:transparent;border:1px solid #7a1c22;color:#ff9b9b;border-radius:8px;padding:6px 8px;cursor:pointer;font:12px Inter,sans-serif}
+    .status{position:fixed;right:12px;bottom:12px;background:#111;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:11px;color:var(--muted);z-index:5}
+    .status.live{color:#8ee0a8}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <img class="logo" src="assets/logo-giants.png" alt="Windrose Giants Antwerp">
+        <img class="wr" src="assets/logo-windrose-white.png" alt="Windrose">
+      </div>
+      <div class="kicker">Wereld Diabetes Dag</div>
+      <h1>Bied mee!</h1>
+      <div class="sub">Jersey &amp; wedstrijdbal</div>
+      <p class="match">Windrose Giants Antwerp vs Brussels<br>zaterdag 14 november 2026 · Lotto Arena</p>
+
+      <div class="notice">
+        <strong>Je betaalt niets nu.</strong>
+        Winnaars worden tijdens de wedstrijd omgeroepen en betalen ter plaatse aan het Show Team.
+        De opbrengst gaat naar Hippo &amp; Friends.
+      </div>
+      <div class="charity">
+        <strong>Hippo &amp; Friends</strong> is een Belgische organisatie die zich inzet tegen
+        type 1 diabetes: bewustwording vergroten, de levenskwaliteit van mensen met type 1 diabetes
+        verbeteren en wetenschappelijk onderzoek steunen.
+        Meer info: <a href="https://www.hippoandfriends.com/nl" target="_blank" rel="noopener">hippoandfriends.com</a>
+      </div>
+      <div class="warn" id="backend-warn">
+        De live database is nog niet gekoppeld. Je ziet de veiling al, maar biedingen worden
+        nog niet tussen bezoekers gedeeld. Het Show Team koppelt dit zo.
+      </div>
+      <div class="clock" id="clock" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid" id="grid"></div>
+    <section class="admin" id="admin">
+      <h2>Afroepen — hoogste biedingen</h2>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:14px">Alleen zichtbaar via de geheime admin-link. Verwijder hier een foutief bod; het vorige geldige bod wordt weer het hoogste.</p>
+      <div id="admin-table"></div>
+    </section>
+  </main>
+
+  <footer>
+    <img class="wr" src="assets/logo-windrose-white.png" alt="Windrose">
+    <p>WGA Show Team · Windrose Giants Antwerp</p>
+    <p>Opbrengst voor Hippo &amp; Friends · Wereld Diabetes Dag 2026</p>
+  </footer>
+  <div class="status" id="status">laden…</div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
