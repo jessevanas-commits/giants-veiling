@@ -71,7 +71,7 @@ window.CONFIG = {
       id: "ball",
       title: "Wedstrijdbal",
       blurb: "Gesigneerde wedstrijdbal.",
-      image: "assets/bal.jpg?v=2",
+      image: "assets/bal-zwart.jpg",
       startBid: 15
     }
   ]
