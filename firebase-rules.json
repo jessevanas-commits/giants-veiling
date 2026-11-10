@@ -5,8 +5,15 @@
       "items": {
         "$itemId": {
           ".write": true,
-          ".validate": "newData.hasChildren(['amount']) && newData.child('amount').isNumber()"
+          ".validate": "newData.hasChildren(['amount']) && newData.child('amount').isNumber() && !newData.hasChild('email') && !newData.hasChild('phone')"
         }
+      }
+    },
+    "contacts": {
+      ".read": "auth != null && auth.token.email === 'jesse.vanas@windrose.ai'",
+      "$contactId": {
+        ".write": "newData.exists() && newData.hasChildren(['name', 'email', 'phone', 'consent']) && newData.child('name').isString() && newData.child('name').val().length >= 2 && newData.child('name').val().length <= 80 && newData.child('email').isString() && newData.child('email').val().contains('@') && newData.child('email').val().length <= 120 && newData.child('phone').isString() && newData.child('phone').val().length >= 8 && newData.child('phone').val().length <= 30 && newData.child('consent').val() === true && !newData.hasChild('password')",
+        ".validate": "newData.hasChildren(['name', 'email', 'phone', 'consent'])"
       }
     }
   }

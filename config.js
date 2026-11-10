@@ -18,19 +18,25 @@ window.CONFIG = {
   // Dit is geen sterke beveiliging (de token staat in dit bestand).
   adminToken: "wga14-XCmzNKWV2R1zq0gaw2AeBGl_",
 
+  // Google-account dat contactgegevens mag lezen (Firebase Auth).
+  adminEmail: "jesse.vanas@windrose.ai",
+
   /* Backend
      type: "none"     – biedingen worden NIET gedeeld (tijdelijk, tot de database klaar is)
      type: "firebase" – aanbevolen: Realtime Database, zie SETUP.md
      type: "json"     – een CORS JSON-store met GET + PUT op één URL
   */
   backend: {
-    type: "none",
-    // Firebase: vul in na het aanmaken van het project (SETUP.md).
+    type: "firebase",
+    // Firebase project giants-veiling (Realtime Database, europe-west1).
     firebase: {
-      apiKey: "",
-      authDomain: "",
-      databaseURL: "",
-      projectId: ""
+      apiKey: "AIzaSyAoVJMKiuVDSqqyMW4vE6dbbcZ5SW5IUSE",
+      authDomain: "giants-veiling.firebaseapp.com",
+      databaseURL: "https://giants-veiling-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "giants-veiling",
+      storageBucket: "giants-veiling.firebasestorage.app",
+      messagingSenderId: "1041321597797",
+      appId: "1:1041321597797:web:67f02a60be91add51c9f8c"
     },
     // Alternatief: volledige GET/PUT-URL van een JSON-blob.
     jsonUrl: ""

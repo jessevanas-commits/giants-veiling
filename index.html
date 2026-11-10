@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b0b0b">
   <meta name="description" content="Bied mee op gedragen jerseys en de wedstrijdbal. Wereld Diabetes Dag, Windrose Giants Antwerp vs Brussels, 14 november 2026. Opbrengst gaat naar Hippo &amp; Friends.">
   <meta property="og:title" content="Bied mee! Giants-veiling voor Hippo &amp; Friends">
-  <meta property="og:description" content="3 gedragen jerseys en de wedstrijdbal. Je betaalt niets nu — winnaars worden tijdens de wedstrijd omgeroepen.">
+  <meta property="og:description" content="3 gedragen jerseys en de wedstrijdbal. Je betaalt niets nu. De winnaars worden na afloop per e-mail gecontacteerd.">
   <meta property="og:image" content="assets/logo-giants.png">
   <title>Bied mee! · Windrose Giants Antwerp</title>
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -95,6 +95,20 @@
     button.del{background:transparent;border:1px solid #7a1c22;color:#ff9b9b;border-radius:8px;padding:6px 8px;cursor:pointer;font:12px Inter,sans-serif}
     .status{margin:10px auto 0;text-align:center;font-size:12px;color:var(--soft)}
     .status.live{color:#8ee0a8}
+    .account{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:18px 0 0}
+    .account h2{font-family:"Bebas Neue",sans-serif;font-size:26px;letter-spacing:.03em;margin-bottom:6px}
+    .account .row{display:grid;gap:8px;margin-top:8px}
+    @media(min-width:700px){.account .row.two{grid-template-columns:1fr 1fr}}
+    .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin-top:10px}
+    .consent input{width:auto;margin-top:3px}
+    .account-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between}
+    .account-bar p{font-size:14px;color:var(--muted)}
+    .account-bar b{color:#fff}
+    .linkbtn{background:transparent;border:0;color:var(--red);font:600 14px Inter,sans-serif;cursor:pointer;padding:0;text-decoration:underline}
+    .account button.save{appearance:none;border:0;background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:12px 16px;border-radius:12px;cursor:pointer;margin-top:12px}
+    .admin-auth{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px;font-size:14px;color:var(--muted)}
+    .admin-auth button{appearance:none;border:0;background:#fff;color:#111;font-weight:700;padding:10px 14px;border-radius:10px;cursor:pointer;margin-top:8px}
+    button.csv{appearance:none;border:0;background:#fff;color:#111;font-weight:700;font-size:14px;padding:10px 14px;border-radius:10px;cursor:pointer;margin:0 0 14px}
   </style>
 </head>
 <body>
@@ -110,7 +124,7 @@
 
       <div class="notice">
         <strong>Je betaalt niets nu.</strong>
-        Winnaars worden tijdens de wedstrijd omgeroepen en betalen ter plaatse aan het Show Team.
+        De winnaars worden na afloop per e-mail gecontacteerd.
         De opbrengst gaat naar Hippo &amp; Friends.
       </div>
       <div class="charity">
@@ -130,10 +144,12 @@
   </header>
 
   <main class="wrap">
+    <section class="account" id="account"></section>
     <div class="grid" id="grid"></div>
     <section class="admin" id="admin">
-      <h2>Afroepen — hoogste biedingen</h2>
-      <p style="color:var(--muted);margin-bottom:12px;font-size:14px">Alleen zichtbaar via de geheime admin-link. Verwijder hier een foutief bod; het vorige geldige bod wordt weer het hoogste.</p>
+      <h2>Overzicht — hoogste biedingen</h2>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:14px">Zichtbaar via de geheime admin-link. Contactgegevens (e-mail en telefoon) zie je pas na aanmelden met Google als jesse.vanas@windrose.ai. Verwijder hier een foutief bod; het vorige geldige bod wordt weer het hoogste.</p>
+      <div class="admin-auth" id="admin-auth"></div>
       <div id="admin-table"></div>
     </section>
   </main>
