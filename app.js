@@ -347,7 +347,7 @@
       '</div><div class="l">' +
       l +
       "</div></div>";
-    els.clock.innerHTML = part(d, "dagen") + part(h, "uur") + part(m, "min") + part(sec, "sek");
+    els.clock.innerHTML = part(d, "dagen") + part(h, "uur") + part(m, "min") + part(sec, "sec");
     return false;
   }
 
@@ -388,7 +388,7 @@
         "</b>" +
         (high.seat ? escapeHtml(high.seat) : "") +
         "</div>"
-      : "<div class='who'>Nog geen<br>bieder</div>";
+      : "<div class='who'>Nog geen bieder</div>";
 
     const form = closed
       ? "<p class='hint'>De veiling is gesloten.</p>"
