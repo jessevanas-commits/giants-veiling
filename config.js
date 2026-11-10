@@ -46,32 +46,32 @@ window.CONFIG = {
     {
       id: "jersey1",
       title: "Jersey — lot 1",
-      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
-      image: "assets/jersey.jpg",
+      blurb: "Een van drie identieke gesigneerde jerseys.",
+      image: "assets/jersey.jpg?v=2",
       startBid: 25,
       group: "jersey"
     },
     {
       id: "jersey2",
       title: "Jersey — lot 2",
-      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
-      image: "assets/jersey.jpg",
+      blurb: "Een van drie identieke gesigneerde jerseys.",
+      image: "assets/jersey.jpg?v=2",
       startBid: 25,
       group: "jersey"
     },
     {
       id: "jersey3",
       title: "Jersey — lot 3",
-      blurb: "Een van drie identieke gedragen wedstrijdshirts.",
-      image: "assets/jersey.jpg",
+      blurb: "Een van drie identieke gesigneerde jerseys.",
+      image: "assets/jersey.jpg?v=2",
       startBid: 25,
       group: "jersey"
     },
     {
       id: "ball",
       title: "Wedstrijdbal",
-      blurb: "De bal van deze wedstrijd.",
-      image: "assets/bal.jpg",
+      blurb: "Gesigneerde wedstrijdbal.",
+      image: "assets/bal.jpg?v=2",
       startBid: 15
     }
   ]

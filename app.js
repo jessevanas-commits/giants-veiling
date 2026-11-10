@@ -591,10 +591,10 @@
       '">' +
       '<div class="photo"><img src="' +
       first.image +
-      '" alt="Gedragen jersey"></div>' +
+      '" alt="Gesigneerde jersey"></div>' +
       '<div class="body">' +
-      "<h2>Gedragen jersey</h2>" +
-      '<p class="blurb">3 identieke gedragen wedstrijdshirts. Je biedt op één lot.</p>' +
+      "<h2>Gesigneerde jersey</h2>" +
+      '<p class="blurb">3 identieke gesigneerde jerseys. Je biedt op één lot.</p>' +
       items.map(renderLot).join("") +
       "</div></article>"
     );
