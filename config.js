@@ -46,21 +46,21 @@ window.CONFIG = {
     {
       id: "jersey1",
       title: "Gesigneerde jersey PACK #9",
-      blurb: "Gesigneerde jersey van PACK, rugnummer 9.",
+      blurb: "GAME WORN tijdens AEK Athene vs Windrose Giants Antwerp. Gesigneerde jersey van PACK, rugnummer 9.",
       image: "assets/jersey-pack-studio.jpg",
       startBid: 50
     },
     {
       id: "jersey2",
       title: "Gesigneerde jersey TUMBA #24",
-      blurb: "Gesigneerde jersey van TUMBA, rugnummer 24.",
+      blurb: "GAME WORN tijdens AEK Athene vs Windrose Giants Antwerp. Gesigneerde jersey van TUMBA, rugnummer 24.",
       image: "assets/jersey-tumba-studio.jpg",
       startBid: 50
     },
     {
       id: "jersey3",
       title: "Gesigneerde jersey KESTELOOT #32",
-      blurb: "Gesigneerde jersey van KESTELOOT, rugnummer 32.",
+      blurb: "GAME WORN tijdens AEK Athene vs Windrose Giants Antwerp. Gesigneerde jersey van KESTELOOT, rugnummer 32.",
       image: "assets/jersey-kesteloot-studio.jpg",
       startBid: 50
     },
@@ -69,7 +69,7 @@ window.CONFIG = {
       title: "Wedstrijdbal",
       blurb: "Gesigneerde wedstrijdbal.",
       image: "assets/bal-studio.jpg",
-      startBid: 15
+      startBid: 25
     }
   ]
 };
